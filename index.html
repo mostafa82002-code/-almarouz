@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة الماروز | للحلول اللوجستية والتوريدات المتكاملة</title>
+    <title>شركة الماروز | للشحن والتخليص والتوريدات العامة</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
         }
 
         body {
-            background: #02060c;
+            background: #010409;
             color: #ffffff;
             min-height: 100vh;
             display: flex;
@@ -23,154 +23,181 @@
             position: relative;
         }
 
-        /* خلفية ضوئية متحركة مبهرة */
+        /* خلفية إضاءة سينمائية فاخرة */
         body::before {
             content: '';
             position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, rgba(10, 25, 47, 0) 70%);
-            top: -100px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, rgba(1, 4, 9, 0) 70%);
+            top: -150px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 0;
-            animation: pulseGlow 4s infinite alternate ease-in-out;
+            animation: ambientGlow 6s infinite alternate ease-in-out;
         }
 
-        .wrapper {
+        .main-wrapper {
             width: 100%;
             max-width: 440px;
-            padding: 20px;
+            padding: 16px;
             z-index: 2;
         }
 
-        /* شاشة ترحيب سينمائية فاخرة جداً */
+        /* الصفحة الأولى: شاشة الترحيب السينمائية الخارقة */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #02060c;
+            background: #010409;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s ease;
         }
 
-        .splash-emblem {
-            width: 130px;
-            height: 130px;
-            background: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #8b6508 100%);
-            border-radius: 35px;
+        .splash-logo-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #111d2e 0%, #070e17 100%);
+            border: 2px solid rgba(212, 175, 55, 0.6);
+            border-radius: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 60px;
-            font-weight: 900;
-            color: #02060c;
-            box-shadow: 0 0 60px rgba(212, 175, 55, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.6);
-            animation: cinematicPulse 2s infinite ease-in-out;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.3), inset 0 0 20px rgba(212, 175, 55, 0.2);
+            animation: logoFloat 3s infinite ease-in-out;
             margin-bottom: 25px;
-            transform: rotate(-5deg);
         }
 
-        .splash-main-title {
-            font-size: 32px;
+        .splash-logo-text {
+            font-size: 65px;
             font-weight: 900;
-            background: linear-gradient(135deg, #ffffff 30%, #d4af37 100%);
+            background: linear-gradient(135deg, #fff 20%, #d4af37 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+        }
+
+        .splash-title {
+            font-size: 34px;
+            font-weight: 900;
+            color: #d4af37;
+            margin-bottom: 8px;
             letter-spacing: 1px;
             text-align: center;
         }
 
-        .splash-sub-title {
+        .splash-subtitle {
             font-size: 13px;
-            color: #94a3b8;
-            letter-spacing: 3px;
+            color: #8b949e;
+            letter-spacing: 4px;
             text-transform: uppercase;
             text-align: center;
         }
 
-        .progress-bar-container {
-            width: 160px;
+        .splash-loader {
+            width: 150px;
             height: 4px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 4px;
             margin-top: 45px;
             overflow: hidden;
             position: relative;
         }
 
-        .progress-bar-fill {
+        .splash-loader-bar {
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, #d4af37, #ffffff);
+            background: linear-gradient(90deg, transparent, #d4af37, #fff);
             animation: loadProgress 2.8s forwards cubic-bezier(0.65, 0, 0.35, 1);
         }
 
-        /* الموقع الرئيسي العالمي */
-        #main-app {
+        /* الموقع الرئيسي العالمي الفخم */
+        #main-content-area {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(35px);
             transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
             display: none;
         }
 
-        #main-app.visible {
+        #main-content-area.visible {
             opacity: 1;
             transform: translateY(0);
             display: block;
         }
 
-        .glass-card {
-            background: rgba(13, 27, 46, 0.75);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(212, 175, 55, 0.35);
-            border-radius: 32px;
-            padding: 32px 22px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.84), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        .card-container {
+            background: linear-gradient(145deg, rgba(13, 25, 43, 0.85), rgba(5, 12, 22, 0.95));
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 36px;
+            padding: 30px 20px;
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.9), inset 0 1px 1px rgba(255, 255, 255, 0.2);
             text-align: center;
         }
 
-        .brand-logo-small {
-            width: 80px;
-            height: 80px;
+        .brand-header-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(212, 175, 55, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 15px;
+            border-radius: 24px;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .brand-icon-badge {
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, #d4af37, #996515);
-            border-radius: 22px;
-            margin: 0 auto 15px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 900;
-            color: #02060c;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+            color: #010409;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+            flex-shrink: 0;
         }
 
-        .company-title {
-            font-size: 26px;
+        .brand-info h1 {
+            font-size: 22px;
             font-weight: 900;
             color: #d4af37;
-            margin-bottom: 6px;
+            margin-bottom: 3px;
         }
 
-        .company-desc {
+        .brand-info p {
+            font-size: 11px;
+            color: #8b949e;
+            letter-spacing: 0.5px;
+        }
+
+        .welcome-msg {
             font-size: 13px;
-            color: #cbd5e0;
-            margin-bottom: 25px;
+            color: #c9d1d9;
             line-height: 1.6;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px;
+            border-radius: 16px;
+            border-right: 3px solid #d4af37;
+            text-align: right;
         }
 
-        .section-heading {
+        .section-title {
             font-size: 11px;
             color: #d4af37;
             text-transform: uppercase;
@@ -178,23 +205,22 @@
             margin-bottom: 14px;
             font-weight: 800;
             text-align: right;
-            border-right: 3px solid #d4af37;
-            padding-right: 8px;
+            padding-right: 5px;
         }
 
-        /* شبكة الأيقونات العالمية الضخمة البراقة */
-        .services-grid {
+        /* شبكة الأيقونات العالمية البراقة (المستوى العالي) */
+        .services-world-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
+            gap: 12px;
             margin-bottom: 25px;
         }
 
-        .service-card-item {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+        .service-world-card {
+            background: linear-gradient(145deg, rgba(20, 35, 58, 0.7), rgba(8, 16, 28, 0.9));
             border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 22px;
-            padding: 22px 14px;
+            border-radius: 24px;
+            padding: 22px 12px;
             text-decoration: none;
             color: #ffffff;
             display: flex;
@@ -202,104 +228,115 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .service-card-item:hover {
+        .service-world-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            transition: 0.6s;
+        }
+
+        .service-world-card:hover::before {
+            left: 100%;
+        }
+
+        .service-world-card:active {
+            transform: scale(0.94);
             border-color: #25d366;
-            transform: translateY(-3px);
-        }
-
-        .service-card-item:active {
-            transform: scale(0.95);
             background: rgba(37, 211, 102, 0.12);
         }
 
-        .icon-box {
-            font-size: 38px;
-            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
-            animation: floatIcon 3s infinite ease-in-out;
+        .service-icon-lg {
+            font-size: 42px;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.7));
+            animation: iconPulse 3s infinite ease-in-out;
         }
 
-        .service-name {
+        .service-label {
             font-size: 13px;
             font-weight: 800;
             text-align: center;
-            color: #ffffff;
+            color: #f0f6fc;
         }
 
-        .wa-badge {
+        .whatsapp-tag {
             font-size: 10px;
             background: linear-gradient(135deg, #25d366, #128c7e);
-            color: #fff;
-            padding: 3px 10px;
+            color: #ffffff;
+            padding: 4px 12px;
             border-radius: 20px;
             font-weight: 700;
-            box-shadow: 0 2px 8px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
         }
 
         /* أزرار الاتصال والخريطة الفخمة */
-        .action-stack {
+        .actions-stack {
             display: flex;
             flex-direction: column;
             gap: 12px;
             margin-bottom: 22px;
         }
 
-        .global-btn {
+        .btn-elite {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             width: 100%;
-            padding: 15px;
-            border-radius: 16px;
+            padding: 16px;
+            border-radius: 18px;
             text-decoration: none;
             font-weight: 800;
             font-size: 14px;
             transition: all 0.3s ease;
         }
 
-        .btn-gold-glow {
-            background: linear-gradient(135deg, #f3e7c4 0%, #d4af37 50%, #aa771c 100%);
-            color: #02060c;
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        .btn-elite-gold {
+            background: linear-gradient(135deg, #f3e7c4 0%, #d4af37 50%, #996515 100%);
+            color: #010409;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.45);
         }
 
-        .btn-gold-glow:active {
+        .btn-elite-gold:active {
             transform: scale(0.97);
         }
 
-        .btn-dark-glass {
-            background: rgba(255, 255, 255, 0.05);
+        .btn-elite-glass {
+            background: rgba(255, 255, 255, 0.04);
             color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        .btn-dark-glass:active {
+        .btn-elite-glass:active {
             transform: scale(0.97);
         }
 
-        .address-footer-box {
-            padding-top: 16px;
+        .footer-address {
+            padding-top: 18px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 12px;
-            color: #94a3b8;
+            color: #8b949e;
             line-height: 1.6;
         }
 
-        /* الحركات الفنية والسينمائية */
-        @keyframes cinematicPulse {
-            0%, 100% { transform: scale(1) rotate(-5deg); box-shadow: 0 0 50px rgba(212, 175, 55, 0.5); }
-            50% { transform: scale(1.08) rotate(0deg); box-shadow: 0 0 80px rgba(212, 175, 55, 0.85); }
+        /* الحركات السينمائية البصرية */
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); box-shadow: 0 0 40px rgba(212, 175, 55, 0.3); }
+            50% { transform: translateY(-8px); box-shadow: 0 0 65px rgba(212, 175, 55, 0.6); }
         }
 
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
         }
 
         @keyframes loadProgress {
@@ -307,9 +344,9 @@
             100% { left: 0; }
         }
 
-        @keyframes pulseGlow {
+        @keyframes ambientGlow {
             0% { transform: translateX(-50%) scale(1); opacity: 0.4; }
-            100% { transform: translateX(-50%) scale(1.25); opacity: 0.7; }
+            100% { transform: translateX(-50%) scale(1.3); opacity: 0.7; }
         }
     </style>
 </head>
@@ -317,67 +354,80 @@
 
     <!-- شاشة ترحيب سينمائية مبهرة (3 ثوانٍ) -->
     <div id="splash-screen">
-        <div class="splash-emblem">M</div>
-        <div class="splash-main-title">شركة الماروز</div>
-        <div class="splash-sub-title">بوابتك اللوجستية العالمية</div>
-        <div class="progress-bar-container">
-            <div class="progress-bar-fill"></div>
+        <div class="splash-logo-container">
+            <span class="splash-logo-text">M</span>
+        </div>
+        <div class="splash-title">شركة الماروز</div>
+        <div class="splash-subtitle">بوابتك اللوجستية العالمية</div>
+        <div class="splash-loader">
+            <div class="splash-loader-bar"></div>
         </div>
     </div>
 
-    <!-- واجهة الموقع الرئيسي العالمية الخارقة -->
-    <div class="wrapper">
-        <div id="main-app">
-            <div class="glass-card">
-                <div class="brand-logo-small">M</div>
-                <div class="company-title">شركة الماروز</div>
-                <div class="company-desc">نبتكر لك أحدث الحلول المتكاملة في الشحن الدولي، التخليص الجمركي، والتوريدات العامة بأعلى معايير الجودة العالمية والاحترافية.</div>
-
-                <div class="section-heading">خدماتنا المباشرة (تواصل فوري واتساب)</div>
+    <!-- واجهة الموقع الرئيسي العالمية (التحفة الفنية) -->
+    <div class="main-wrapper">
+        <div id="main-content-area">
+            <div class="card-container">
                 
-                <!-- الأيقونات الضخمة البراقة المربوطة بالواتساب -->
-                <div class="services-grid">
-                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%82%D8%B3%D9%85%20%D8%A7%D9%84%D8%AA%D9%88%D8%B1%D9%8A%D8%AF%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9" class="service-card-item" target="_blank">
-                        <div class="icon-box">📦</div>
-                        <div class="service-name">التوريدات العامة</div>
-                        <span class="wa-badge">محادثة واتساب</span>
+                <!-- هيدر الشركة الفخم -->
+                <div class="brand-header-box">
+                    <div class="brand-icon-badge">M</div>
+                    <div class="brand-info">
+                        <h1>شركة الماروز</h1>
+                        <p>الشحن الدولي • التخليص الجمركي • التوريدات</p>
+                    </div>
+                </div>
+
+                <div class="welcome-msg">
+                    نقدم لك أحدث الحلول المتكاملة والذكية بأعلى معايير الكفاءة والاحترافية العالمية لتلبية كافة احتياجات أعمالكم.
+                </div>
+
+                <div class="section-title">اختر القسم للتواصل المباشر (واتساب)</div>
+                
+                <!-- شبكة الأيقونات العالمية الضخمة البراقة -->
+                <div class="services-world-grid">
+                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%82%D8%B3%D9%85%20%D8%A7%D9%84%D8%AA%D9%88%D8%B1%D9%8A%D8%AF%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9" class="service-world-card" target="_blank">
+                        <div class="service-icon-lg">📦</div>
+                        <div class="service-label">التوريدات العامة</div>
+                        <span class="whatsapp-tag">محادثة واتساب</span>
                     </a>
 
-                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B4%D8%AD%D9%86%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A" class="service-card-item" target="_blank">
-                        <div class="icon-box">🚢</div>
-                        <div class="service-name">الشحن الدولي والمحلي</div>
-                        <span class="wa-badge">محادثة واتساب</span>
+                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B4%D8%AD%D9%86%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A" class="service-world-card" target="_blank">
+                        <div class="service-icon-lg">🚢</div>
+                        <div class="service-label">الشحن الدولي والمحلي</div>
+                        <span class="whatsapp-tag">محادثة واتساب</span>
                     </a>
 
-                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%A7%D9%84%D8%AA%D8%AE%D9%84%D9%8A%D8%B5%20%D8%A7%D9%8讣%D9%85%D8%B1%D9%83%D9%8A" class="service-card-item" target="_blank">
-                        <div class="icon-box">🛃</div>
-                        <div class="service-name">التخليص الجمركي</div>
-                        <span class="wa-badge">محادثة واتساب</span>
+                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%A7%D9%84%D8%AA%D8%AE%D9%84%D9%8A%D8%B5%20%D8%A7%D9%84%D8%AC%D9%85%D8%B1%D9%83%D9%8A" class="service-world-card" target="_blank">
+                        <div class="service-icon-lg">🛃</div>
+                        <div class="service-label">التخليص الجمركي</div>
+                        <span class="whatsapp-tag">محادثة واتساب</span>
                     </a>
 
-                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%84%D9%84%D8%AF%D8%B9%D9%85%20%D8%A7%D9%84%D9%81%D9%86%D9%8A%20%D9%88%D8%A7%D9%84%D8%B4%D9%83%D8%A7%D9%88%D9%89" class="service-card-item" target="_blank">
-                        <div class="icon-box">💬</div>
-                        <div class="service-name">الشكاوى والمساعدة</div>
-                        <span class="wa-badge">دعم مباشر</span>
+                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%84%D9%84%D8%AF%D8%B9%D9%85%20%D8%A7%D9%84%D9%81%D9%86%D9%8A%20%D9%88%D8%A7%D9%84%D8%B4%D9%83%D8%A7%D9%88%D9%89" class="service-world-card" target="_blank">
+                        <div class="service-icon-lg">💬</div>
+                        <div class="service-label">الشكاوى والمساعدة</div>
+                        <span class="whatsapp-tag">دعم مباشر</span>
                     </a>
                 </div>
 
-                <div class="section-heading">الاتصال الهاتفي والمقر الرئيسي</div>
-                <div class="action-stack">
-                    <a href="tel:01096262273" class="global-btn btn-gold-glow">
+                <div class="section-title">الاتصال الهاتفي والموقع الجغرافي</div>
+                <div class="actions-stack">
+                    <a href="tel:01096262273" class="btn-elite btn-elite-gold">
                         📞 الاتصال المباشر: 01096262273
                     </a>
-                    <a href="tel:01001292630" class="global-btn btn-gold-glow">
+                    <a href="tel:01001292630" class="btn-elite btn-elite-gold">
                         📞 الاتصال المباشر: 01001292630
                     </a>
-                    <a href="https://maps.app.goo.gl/4dydQmmX5Z1GUEvK7" target="_blank" class="global-btn btn-dark-glass">
+                    <a href="https://maps.app.goo.gl/4dydQmmX5Z1GUEvK7" target="_blank" class="btn-elite btn-elite-glass">
                         📍 فتح الموقع الجغرافي على خرائط جوجل
                     </a>
                 </div>
 
-                <div class="address-footer-box">
-                    <strong>العنوان:</strong> شارع محمود حسن عشري، النزهة، مصر الجديدة، القاهرة
+                <div class="footer-address">
+                    <strong>المقر الرئيسي:</strong> شارع محمود حسن عشري، النزهة، مصر الجديدة، القاهرة
                 </div>
+
             </div>
         </div>
     </div>
@@ -387,10 +437,10 @@
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
-                const mainApp = document.getElementById('main-app');
+                const mainApp = document.getElementById('main-content-area');
                 
                 splash.style.opacity = '0';
-                splash.style.transform = 'scale(1.06)';
+                splash.style.transform = 'scale(1.08)';
                 
                 setTimeout(() => {
                     splash.style.display = 'none';
