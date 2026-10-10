@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة الماروز | بوابة الخدمات والحلول اللوجستية المتكاملة</title>
+    <title>شركة الماروز | الحلول اللوجستية العالمية</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #050b14 0%, #0a1826 50%, #03070d 100%);
+            background: radial-gradient(circle at center, #09192b 0%, #03080f 100%);
             color: #ffffff;
             min-height: 100vh;
             display: flex;
@@ -23,17 +23,17 @@
             position: relative;
         }
 
-        /* خلفية ضوئية متحركة دافئة */
+        /* خلفية ضوئية متحركة فاخرة */
         body::before {
             content: '';
             position: absolute;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 70%);
-            top: -60px;
-            right: -60px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            top: -80px;
+            right: -80px;
             z-index: 0;
-            animation: pulseGlow 5s infinite alternate ease-in-out;
+            animation: pulseGlow 6s infinite alternate ease-in-out;
         }
 
         .container {
@@ -43,61 +43,60 @@
             z-index: 1;
         }
 
-        /* شاشة الترحيب الأسطورية (3 ثوانٍ) */
+        /* الصفحة الأولى: شاشة ترحيب سينمائية بlogo متحرك رائع */
         #splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #050b14;
+            background: #03080f;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 999;
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s ease;
         }
 
-        .splash-logo-box {
-            position: relative;
-            width: 115px;
-            height: 115px;
-            background: linear-gradient(135deg, #d4af37, #996515);
+        .splash-logo-circle {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #f3e7c4 0%, #d4af37 50%, #996515 100%);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 52px;
+            font-size: 55px;
             font-weight: 900;
-            color: #050b14;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
-            animation: bounceLogo 2s infinite ease-in-out;
+            color: #03080f;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.6);
+            animation: logoCinematic 2.5s infinite ease-in-out;
             margin-bottom: 25px;
         }
 
         .splash-title {
-            font-size: 28px;
-            font-weight: 800;
+            font-size: 30px;
+            font-weight: 900;
             color: #d4af37;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-            text-align: center;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
         }
 
         .splash-sub {
             font-size: 14px;
             color: #a0aec0;
-            letter-spacing: 1px;
-            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .loading-line {
-            width: 130px;
+            width: 140px;
             height: 3px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 3px;
-            margin-top: 35px;
+            margin-top: 40px;
             overflow: hidden;
             position: relative;
         }
@@ -109,15 +108,15 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: #d4af37;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
             animation: loadBar 2.5s forwards cubic-bezier(0.65, 0, 0.35, 1);
         }
 
-        /* الموقع الرئيسي العالمي */
+        /* الصفحة الثانية: تصميم عالمي فائق الفخامة */
         #main-content {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
+            transform: translateY(25px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             display: none;
         }
 
@@ -128,98 +127,127 @@
         }
 
         .profile-card {
-            background: rgba(15, 32, 54, 0.55);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(212, 175, 55, 0.35);
-            border-radius: 28px;
-            padding: 30px 22px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+            background: rgba(14, 28, 48, 0.6);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 30px;
+            padding: 30px 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             text-align: center;
         }
 
         .brand-badge {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #d4af37, #b8860b);
-            border-radius: 22px;
+            width: 85px;
+            height: 85px;
+            background: linear-gradient(135deg, #d4af37, #996515);
+            border-radius: 24px;
             margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 36px;
+            font-size: 38px;
             font-weight: 900;
-            color: #050b14;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
+            color: #03080f;
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
         }
 
         .company-name {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 900;
             color: #d4af37;
             margin-bottom: 6px;
+            letter-spacing: 0.5px;
         }
 
         .company-tagline {
             font-size: 13px;
             color: #cbd5e0;
-            margin-bottom: 22px;
+            margin-bottom: 25px;
             line-height: 1.6;
-            font-weight: 400;
         }
 
-        .section-header {
-            font-size: 13px;
+        .section-title {
+            font-size: 12px;
             color: #d4af37;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             margin-bottom: 12px;
-            font-weight: 700;
+            font-weight: 800;
             text-align: right;
             border-right: 3px solid #d4af37;
             padding-right: 8px;
         }
 
-        /* شبكة خدمات واتساب المباشرة */
-        .services-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 22px;
+        /* شبكة الأيقونات البراقة الكبيرة */
+        .grid-services {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
         }
 
-        .whatsapp-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 14px;
-            padding: 12px 16px;
+        .service-tile {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 20px;
+            padding: 18px 12px;
             text-decoration: none;
             color: #ffffff;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .whatsapp-btn:active {
-            transform: scale(0.98);
-            background: rgba(37, 211, 102, 0.15);
+        .service-tile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            transition: 0.5s;
+        }
+
+        .service-tile:hover::before {
+            left: 100%;
+        }
+
+        .service-tile:active {
+            transform: scale(0.95);
             border-color: #25d366;
+            background: rgba(37, 211, 102, 0.1);
         }
 
-        .wa-icon {
+        .tile-icon {
+            font-size: 32px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+        }
+
+        .tile-text {
+            font-size: 13px;
+            font-weight: 700;
+            text-align: center;
+            color: #f7fafc;
+        }
+
+        .tile-badge {
+            font-size: 10px;
             background: #25d366;
-            color: #ffffff;
-            padding: 4px 8px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 600;
         }
 
         /* أزرار الاتصال والخريطة */
-        .action-buttons {
+        .actions-box {
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -230,48 +258,48 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             width: 100%;
             padding: 14px;
-            border-radius: 14px;
+            border-radius: 16px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             transition: all 0.3s ease;
         }
 
-        .btn-primary {
+        .btn-gold {
             background: linear-gradient(135deg, #d4af37, #aa771c);
-            color: #050b14;
-            box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
+            color: #03080f;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
         }
 
-        .btn-primary:active {
+        .btn-gold:active {
             transform: scale(0.97);
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.06);
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.05);
             color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        .btn-secondary:active {
+        .btn-glass:active {
             transform: scale(0.97);
         }
 
-        .address-box {
+        .address-footer {
             padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 12px;
             color: #a0aec0;
             line-height: 1.6;
         }
 
-        /* Animations */
-        @keyframes bounceLogo {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        /* الحركات السينمائية */
+        @keyframes logoCinematic {
+            0%, 100% { transform: scale(1) rotate(0deg); box-shadow: 0 0 40px rgba(212, 175, 55, 0.5); }
+            50% { transform: scale(1.07) rotate(2deg); box-shadow: 0 0 60px rgba(212, 175, 55, 0.8); }
         }
 
         @keyframes loadBar {
@@ -281,64 +309,71 @@
 
         @keyframes pulseGlow {
             0% { transform: scale(1); opacity: 0.3; }
-            100% { transform: scale(1.25); opacity: 0.6; }
+            100% { transform: scale(1.2); opacity: 0.6; }
         }
     </style>
 </head>
 <body>
 
-    <!-- شاشة الترحيب الاحترافية -->
+    <!-- الصفحة الأولى: شاشة الترحيب الفخمة المتحركة -->
     <div id="splash-screen">
-        <div class="splash-logo-box">M</div>
+        <div class="splash-logo-circle">M</div>
         <div class="splash-title">الماروز ترحب بكم</div>
-        <div class="splash-sub">التوريدات العامة • الشحن الدولي • التخليص الجمركي</div>
+        <div class="splash-sub">بوابتكم اللوجستية العالمية</div>
         <div class="loading-line"></div>
     </div>
 
-    <!-- البوابة الرئيسية للموقع -->
+    <!-- الصفحة الثانية: التصميم العالمي البراق -->
     <div class="container">
         <div id="main-content">
             <div class="profile-card">
                 <div class="brand-badge">M</div>
                 <div class="company-name">شركة الماروز</div>
-                <div class="company-tagline">الشريك الاستراتيجي الموثوق في تقديم الحلول اللوجستية والتوريدات الشاملة بأعلى معايير الجودة العالمية</div>
+                <div class="company-tagline">نقدم أحدث الحلول المتكاملة في الشحن الدولي والتخليص الجمركي والتوريدات العامة بأعلى معايير الكفاءة</div>
 
-                <!-- قسم طلب الخدمات المباشر عبر واتساب -->
-                <div class="section-header">الخدمات والدعم الفوري (واتساب)</div>
-                <div class="services-container">
-                    <a href="https://wa.me/201096262273?text=%D0%A3%D0%B1%D0%BB%D0%A0%D0%B0%D0%B1%20%D0%A3%D0%B3%D0%AA%D0%B5%D0%A0%20%D0%A3%D0%B1%D0%AA%D0%B9%D0%AA%D0%A0%20%D0%A3%D0%A2%D0%B3%D0%B1%D0%B9%20%D0%A3%D0%A0%D0%A1%D0%A0%D0%AA%D0%A2%D0%A2%20%D0%A3%D0%AA%D0%B9%D0%AA%D0%A0%D0%A1%D0%AA%D0%A2" class="whatsapp-btn" target="_blank">
-                        <span>📦 قسم التوريدات العامة</span>
-                        <span class="wa-icon">💬 واتساب</span>
+                <div class="section-title">اختر القسم للتواصل الفوري (واتساب)</div>
+                
+                <!-- شبكة الأيقونات الكبيرة البراقة -->
+                <div class="grid-services">
+                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8% اصلا%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%82%D8%B3%D9%85%20%D8%A7%D9%84%D8%AA%D9%88%D8%B1%D9%8A%D8%AF%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%A9" class="service-tile" target="_blank">
+                        <div class="tile-icon">📦</div>
+                        <div class="tile-text">التوريدات العامة</div>
+                        <span class="tile-badge">محادثة فوريّة</span>
                     </a>
-                    <a href="https://wa.me/201096262273?text=%D0%A3%D0%B1%D0%A0%D0%B0%D0%B1%20%D0%A3%D0%B3%D0%AA%D0%B5%D0%A0%20%D0%A3%D0%B1%D0%AA%D0%B9%D0%AA%D0%A0%20%D0%A3%D0%A2%D0%B3%D0%B9%20%D0%A3%D0%A0%D0%A1%D0%A0%D0%AA%D0%A2%D0%A2%20%D0%A3%D0%AA%D0%B9%D0%AA%D0%A0%D0%A1%D0%AA%D0%A2" class="whatsapp-btn" target="_blank">
-                        <span>🚢 خدمات الشحن الدولي والمحلي</span>
-                        <span class="wa-icon">💬 واتساب</span>
+
+                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B4%D8%AD%D9%86%20%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A" class="service-tile" target="_blank">
+                        <div class="tile-icon">🚢</div>
+                        <div class="tile-text">الشحن الدولي والمحلي</div>
+                        <span class="tile-badge">محادثة فوريّة</span>
                     </a>
-                    <a href="https://wa.me/201096262273?text=%D0%A3%D0%B1%D0%A0%D0%B0%D0%B1%20%D0%A3%D0%B3%D0%AA%D0%B5%D0%A0%20%D0%A3%D0%B1%D0%AA%D0%B9%D0%AA%D0%A0%20%D0%A3%D0%A2%D0%B3%D0%B9%20%D0%A3%D0%A0%D0%A1%D0%A0%D0%AA%D0%A2%D0%A2%20%D0%A3%D0%AA%D0%B9%D0%AA%D0%A0%D0%A1%D0%AA%D0%A2" class="whatsapp-btn" target="_blank">
-                        <span>🛃 خدمات التخليص الجمركي</span>
-                        <span class="wa-icon">💬 واتساب</span>
+
+                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D8%A7%D9%84%D8%AA%D8%AE%D9%84%D9%8A%D8%B5%20%D8%A7%D9%84%D8%AC%D9%85%D8%B1%D9%83%D9%8A" class="service-tile" target="_blank">
+                        <div class="tile-icon">🛃</div>
+                        <div class="tile-text">التخليص الجمركي</div>
+                        <span class="tile-badge">محادثة فوريّة</span>
                     </a>
-                    <a href="https://wa.me/201096262273?text=%D0%A3%D0%B1%D0%A0%D0%B0%D0%B1%20%D0%A3%D0%B3%D0%AA%D0%B5%D0%A0%20%D0%A3%D0%B1%D0%AA%D0%B9%D0%AA%D0%A0%20%D0%A3%D0%A2%D0%B3%D0%B9%20%D0%A3%D0%A0%D0%A1%D0%A0%D0%AA%D0%A2%D0%A2%20%D0%A3%D0%AA%D0%B9%D0%AA%D0%A0%D0%A1%D0%AA%D0%A2" class="whatsapp-btn" target="_blank">
-                        <span>💬 الشكاوى والاستفسارات والدعم الفني</span>
-                        <span class="wa-icon">💬 واتساب</span>
+
+                    <a href="https://wa.me/201096262273?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%AD%D8%AA%D8%A7%D8%AC%20%D9%84%D9%84%D8%AF%D8%B9%D9%85%20%D8%A7%D9%84%D9%81%D9%86%D9%8A%20%D9%88%D8%A7%D9%84%D8%B4%D9%83%D8%A7%D9%88%D9%89" class="service-tile" target="_blank">
+                        <div class="tile-icon">💬</div>
+                        <div class="tile-text">الشكاوى والمساعدة</div>
+                        <span class="tile-badge">دعم مباشر</span>
                     </a>
                 </div>
 
-                <!-- قسم الاتصال المباشر والخريطة -->
-                <div class="section-header">التواصل المباشر والمقر</div>
-                <div class="action-buttons">
-                    <a href="tel:01096262273" class="btn btn-primary">
+                <div class="section-title">قنوات الاتصال المباشر والخريطة</div>
+                <div class="actions-box">
+                    <a href="tel:01096262273" class="btn btn-gold">
                         📞 الاتصال المباشر: 01096262273
                     </a>
-                    <a href="tel:01001292630" class="btn btn-primary">
+                    <a href="tel:01001292630" class="btn btn-gold">
                         📞 الاتصال المباشر: 01001292630
                     </a>
-                    <a href="https://maps.app.goo.gl/4dydQmmX5Z1GUEvK7" target="_blank" class="btn btn-secondary">
-                        📍 الاتجاهات وموقع المقر على الخريطة
+                    <a href="https://maps.app.goo.gl/4dydQmmX5Z1GUEvK7" target="_blank" class="btn btn-glass">
+                        📍 فتح مقر الشركة على الخريطة الرقمية
                     </a>
                 </div>
 
-                <div class="address-box">
+                <div class="address-footer">
                     <strong>المقر الرئيسي:</strong> شارع محمود حسن عشري، النزهة، مصر الجديدة، القاهرة
                 </div>
             </div>
@@ -346,18 +381,19 @@
     </div>
 
     <script>
+        // التبديل السينمائي بعد 3 ثوانٍ
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
                 const main = document.getElementById('main-content');
                 
                 splash.style.opacity = '0';
-                splash.style.transform = 'scale(1.05)';
+                splash.style.transform = 'scale(1.08)';
                 
                 setTimeout(() => {
                     splash.style.display = 'none';
                     main.classList.add('active');
-                }, 600);
+                }, 700);
             }, 3000);
         });
     </script>
