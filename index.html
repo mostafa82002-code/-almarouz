@@ -1,0 +1,140 @@
+/* شاشة المحتوى الرئيسي */
+    #main-screen {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.95);
+    }
+    #main-screen.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scale(1);
+    }
+    .card-box {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 20px;
+        padding: 30px 20px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+    .company-name {
+        font-size: 24px;
+        font-weight: bold;
+        color: #d4af37;
+        margin-bottom: 5px;
+    }
+    .company-desc {
+        font-size: 14px;
+        color: #a0aec0;
+        margin-bottom: 25px;
+    }
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        padding: 14px;
+        margin-bottom: 15px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, #d4af37, #b89728);
+        color: #0b1c2c;
+    }
+    .btn-primary:active {
+        transform: scale(0.98);
+    }
+    .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn-secondary:active {
+        transform: scale(0.98);
+    }
+    .address-box {
+        margin-top: 15px;
+        font-size: 13px;
+        color: #cbd5e0;
+        line-height: 1.6;
+        background: rgba(0,0,0,0.2);
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    /* الحركات التعبيرية */
+    @keyframes loadingBar {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+    @keyframes pulseLogo {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+<!-- شاشة الترحيب المتحركة -->
+<div id="welcome-screen" class="screen">
+    <div class="logo-container">
+        <div class="logo-circle">M</div>
+    </div>
+    <h1 class="welcome-title">شركة الماروز ترحب بكم</h1>
+    <p class="welcome-subtitle">للتوريدات والشحن والتخليص الجمركي</p>
+    <div class="loader"></div>
+</div>
+
+<!-- شاشة التواصل والموقع الرئيسية -->
+<div id="main-screen" class="screen">
+    <div class="card-box">
+        <div class="company-name">الماروز</div>
+        <div class="company-desc">التوريدات العامة • الشحن • التخليص الجمركي</div>
+
+        <a href="tel:01096262273" class="btn btn-primary">
+            📞 الاتصال بالرقم الأول: 01096262273
+        </a>
+
+        <a href="tel:01001292630" class="btn btn-primary">
+            📞 الاتصال بالرقم الثاني: 01001292630
+        </a>
+
+        <a href="https://maps.app.goo.gl/4dydQmmX5Z1GUEvK7" target="_blank" class="btn btn-secondary">
+            📍 فتح موقع الشركة على الخريطة
+        </a>
+
+        <div class="address-box">
+            العنوان: شارع محمود حسن عشري، النزهة، مصر الجديدة، القاهرة
+        </div>
+    </div>
+</div>
+
+<script>
+    // الانتقال التلقائي بعد 2.8 ثانية من شاشة الترحيب للشاشة الرئيسية
+    setTimeout(function() {
+        const welcome = document.getElementById('welcome-screen');
+        const main = document.getElementById('main-screen');
+        
+        welcome.style.opacity = '0';
+        welcome.style.transform = 'scale(1.05)';
+        
+        setTimeout(() => {
+            welcome.style.display = 'none';
+            main.classList.add('active');
+        }, 600);
+    }, 2800);
+</script>
