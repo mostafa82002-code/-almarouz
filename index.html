@@ -3,123 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شركة الماروز</title>
+    <title>شركة الماروز | للشحن والتخليص والتوريدات</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, -apple-system, sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
+
         body {
-            background-color: #0b1c2c;
+            background: linear-gradient(135deg, #07111a 0%, #0b1c2c 50%, #04090f 100%);
             color: #ffffff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
         }
-        .screen {
+
+        /* خلفية جمالية متحركة */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            top: -50px;
+            right: -50px;
+            z-index: 0;
+            animation: pulseGlow 4s infinite alternate;
+        }
+
+        .container {
             width: 100%;
-            max-width: 400px;
-            text-align: center;
+            max-width: 420px;
+            padding: 20px;
+            z-index: 1;
         }
-        #welcome-screen {
+
+        /* شاشة الترحيب الفنية الأسطورية */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #07111a;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            height: 80vh;
+            align-items: center;
+            z-index: 999;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        .logo-circle {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, #d4af37, #aa771c);
+
+        .splash-logo-box {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, #d4af37, #996515);
             border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            font-weight: 900;
+            color: #07111a;
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.4);
+            animation: bounceLogo 2s infinite ease-in-out;
+            margin-bottom: 25px;
+        }
+
+        .splash-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #d4af37;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            animation: fadeInUp 1s ease;
+            text-align: center;
+        }
+
+        .splash-sub {
+            font-size: 14px;
+            color: #a0aec0;
+            letter-spacing: 1px;
+            animation: fadeInUp 1.2s ease;
+            text-align: center;
+        }
+
+        .loading-line {
+            width: 120px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-top: 35px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loading-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #d4af37;
+            animation: loadBar 2.5s forwards cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        /* محتوى الموقع الأساسي */
+        #main-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+            display: none;
+        }
+
+        #main-content.active {
+            opacity: 1;
+            transform: translateY(0);
+            display: block;
+        }
+
+        .profile-card {
+            background: rgba(26, 54, 93, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        .brand-badge {
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #d4af37, #b8860b);
+            border-radius: 20px;
+            margin: 0 auto 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 38px;
+            font-size: 32px;
             font-weight: bold;
-            color: #ffffff;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            color: #07111a;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
         }
-        .title {
-            font-size: 26px;
-            font-weight: bold;
+
+        .company-name {
+            font-size: 24px;
+            font-weight: 800;
             color: #d4af37;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
-        .subtitle {
-            font-size: 15px;
-            color: #a0aec0;
-            margin-bottom: 25px;
-        }
-        .card-box {
-            background: #1a365d;
-            border: 1px solid #d4af37;
-            border-radius: 16px;
-            padding: 25px 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 14px 10px;
-            margin-bottom: 12px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 15px;
-            text-align: center;
-        }
-        .btn-primary {
-            background: #d4af37;
-            color: #0b1c2c;
-        }
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .address {
-            margin-top: 15px;
+
+        .company-tagline {
             font-size: 13px;
             color: #cbd5e0;
+            margin-bottom: 25px;
             line-height: 1.5;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .service-item {
+            background: rgba(11, 28, 44, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 5px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #d4af37, #aa771c);
+            color: #07111a;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:active {
+            transform: scale(0.97);
+        }
+
+        .address-box {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: #a0aec0;
+            line-height: 1.6;
+        }
+
+        /* الحركات الفنية (Animations) */
+        @keyframes bounceLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes loadBar {
+            0% { left: -100%; }
+            100% { left: 0; }
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.2); opacity: 0.6; }
         }
     </style>
 </head>
 <body>
 
-    <div id="welcome-screen" class="screen">
-        <div class="logo-circle">M</div>
-        <div class="title">شركة الماروز ترحب بكم</div>
-        <div class="subtitle">للتوريدات العامة والشحن والتخليص الجمركي</div>
+    <!-- شاشة الترحيب الفنية (تختفي أوتوماتيكياً بعد 3 ثوانٍ) -->
+    <div id="splash-screen">
+        <div class="splash-logo-box">M</div>
+        <div class="splash-title">الماروز ترحب بكم</div>
+        <div class="splash-sub">للتوريدات العامة • الشحن • التخليص الجمركي</div>
+        <div class="loading-line"></div>
     </div>
 
-    <div id="main-screen" class="screen" style="display: none;">
-        <div class="card-box">
-            <div class="title" style="margin-bottom: 5px;">الماروز</div>
-            <div class="subtitle">التوريدات العامة • الشحن • التخليص الجمركي</div>
+    <!-- الموقع الرئيسي الفخم -->
+    <div class="container">
+        <div id="main-content">
+            <div class="profile-card">
+                <div class="brand-badge">M</div>
+                <div class="company-name">شركة الماروز</div>
+                <div class="company-tagline">بوابتكم الموثوقة للحلول المتكاملة في الشحن والتخليص والتوريدات</div>
 
-            <a href="tel:01096262273" class="btn btn-primary">📞 الاتصال بالرقم الأول: 01096262273</a>
-            <a href="tel:01001292630" class="btn btn-primary">📞 الاتصال بالرقم الثاني: 01001292630</a>
-            <a href="https://maps.app.goo.gl/4dydQmmX5Z1GUEvK7" target="_blank" class="btn btn-secondary">📍 فتح موقع الشركة على الخريطة</a>
+                <div class="services-grid">
+                    <div class="service-item">📦 توريدات عامة</div>
+                    <div class="service-item">🚢 شحن دولي ومحلي</div>
+                    <div class="service-item">🛃 تخليص جمركي</div>
+                </div>
 
-            <div class="address">
-                العنوان: شارع محمود حسن عشري، النزهة، مصر الجديدة، القاهرة
+                <a href="tel:01096262273" class="btn btn-primary">
+                    📞 اتصال بالرقم الأول: 01096262273
+                </a>
+                <a href="tel:01001292630" class="btn btn-primary">
+                    📞 اتصال بالرقم الثاني: 01001292630
+                </a>
+                <a href="https://maps.app.goo.gl/4dydQmmX5Z1GUEvK7" target="_blank" class="btn btn-secondary">
+                    📍 فتح مقر الشركة على الخريطة
+                </a>
+
+                <div class="address-box">
+                    العنوان الرئيسي: شارع محمود حسن عشري، النزهة، مصر الجديدة، القاهرة
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        setTimeout(function() {
-            document.getElementById('welcome-screen').style.display = 'none';
-            document.getElementById('main-screen').style.display = 'block';
-        }, 2500);
+        // التحكم في الانتقال السلس من شاشة الترحيب إلى الموقع الرئيسي
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                const main = document.getElementById('main-content');
+                
+                splash.style.opacity = '0';
+                splash.style.transform = 'scale(1.05)';
+                
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                    main.classList.add('active');
+                }, 600);
+            }, 3000); // 3 ثوانٍ من الفن والبصريات الفخمة
+        });
     </script>
 </body>
 </html>
